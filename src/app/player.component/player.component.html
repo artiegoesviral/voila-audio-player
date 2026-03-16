@@ -1,0 +1,30 @@
+<h2>Mood Playlists</h2>
+
+<div class="moods">
+    <button (click)="selectMood(audio.playlists[0].mood)"> {{ audio.playlists[0].mood }} </button>
+    <button (click)="selectMood(audio.playlists[1].mood)"> {{ audio.playlists[1].mood }} </button>
+    <button (click)="selectMood(audio.playlists[2].mood)"> {{ audio.playlists[2].mood }} </button>
+    <button (click)="selectMood(audio.playlists[3].mood)"> {{ audio.playlists[3].mood }} </button>
+    <button (click)="selectMood(audio.playlists[4].mood)"> {{ audio.playlists[4].mood }} </button>
+    <button (click)="selectMood(audio.playlists[5].mood)"> {{ audio.playlists[5].mood }} </button>
+</div>
+
+<hr>
+
+<div class="now-playing" [hidden]="!audio.currentSong">
+    <img class="artwork" [src]="audio.currentSong?.artwork" alt="Artwork" width="200">
+    <h3>{{ audio.currentSong?.title }}</h3>
+
+    <input type="range" min="0" [max]="audio.duration || 0" [value]="audio.currentTime || 0"
+        (input)="audio.seek(+$any($event.target).value)">
+    <div>{{ formatTime(audio.currentTime || 0) }} / {{ formatTime(audio.duration || 0) }}</div>
+</div>
+
+<hr>
+
+<div class="controls">
+    <button (click)="audio.previous()">⏮</button>
+    <button (click)="audio.play()">▶ Play</button>
+    <button (click)="audio.pause()">⏸ Pause</button>
+    <button (click)="audio.next()">⏭</button>
+</div>
