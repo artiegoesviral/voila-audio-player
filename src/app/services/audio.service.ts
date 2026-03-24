@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 export interface Song {
   title: string;
@@ -521,17 +521,27 @@ export class AudioService {
     }
   ];
 
-  constructor() {
-    this.audio.addEventListener('timeupdate', () => {
-      this.currentTime = this.audio.currentTime;
-    });
+  constructor(private zone: NgZone) {
+    // Ensure duration is updated when metadata loads
     this.audio.addEventListener('loadedmetadata', () => {
-      this.duration = this.audio.duration || 0;
+      this.zone.run(() => {
+        this.duration = this.audio.duration || 0;
+      });
     });
+
+    // Continuous updater for currentTime
+    setInterval(() => {
+      if (this.currentSong) {
+        this.zone.run(() => {
+          this.currentTime = this.audio.currentTime;
+          this.duration = this.audio.duration || 0;
+        });
+      }
+    }, 200); // update 5 times per second
+
     this.audio.addEventListener('ended', () => this.next());
   }
 
-  // Load playlist without autoplay
   loadPlaylist(mood: string) {
     this.currentPlaylist = this.playlists.find(p => p.mood === mood) || null;
     if (!this.currentPlaylist || this.currentPlaylist.songs.length === 0) return;
@@ -542,25 +552,20 @@ export class AudioService {
 
   private loadSong() {
     if (!this.currentPlaylist) return;
+
     const song = this.currentPlaylist.songs[this.index];
-    this.currentSong = song;
 
     this.audio.pause();
 
-    this.audio.src = song.path;
-
+    this.currentSong = song;
     this.currentTime = 0;
-    this.duration = 0;
+
+    this.audio.src = song.path;
     this.audio.currentTime = 0;
-
-    this.audio.load(); // important before play
+    this.audio.load();
   }
 
-  // Only called after a user click
-  play() {
-    this.audio.play().catch(err => console.warn('Playback blocked (user interaction required):', err));
-  }
-
+  play() { this.audio.play().catch(err => console.warn(err)); }
   pause() { this.audio.pause(); }
 
   next() {

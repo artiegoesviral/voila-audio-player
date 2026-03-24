@@ -1,5 +1,4 @@
-<h2>Mood Playlists</h2>
-
+<h2>VOILÀ</h2>
 <div class="moods">
     <button (click)="selectMood(audio.playlists[0].mood)"> {{ audio.playlists[0].mood }} </button>
     <button (click)="selectMood(audio.playlists[1].mood)"> {{ audio.playlists[1].mood }} </button>
@@ -16,7 +15,8 @@
     <h3>{{ audio.currentSong?.title }}</h3>
 
     <input type="range" min="0" [max]="audio.duration || 0" [value]="audio.currentTime || 0"
-        (input)="audio.seek(+$any($event.target).value)">
+        (input)="audio.seek($any($event.target).value)">
+
     <div>{{ formatTime(audio.currentTime || 0) }} / {{ formatTime(audio.duration || 0) }}</div>
 </div>
 
