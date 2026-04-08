@@ -1,6 +1,6 @@
 {
   "homepage" : "https://artiegoesviral.github.io/",
-  "name": "voila-audio-player",
+  "name": "voila-player",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
