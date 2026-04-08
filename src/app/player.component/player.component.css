@@ -1,6 +1,6 @@
 /* Body and container */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     background: #121212;
     color: white;
     display: flex;
@@ -16,13 +16,11 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Header */
 h2 {
     text-align: center;
     margin-bottom: 15px;
 }
 
-/* Mood buttons */
 .moods {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -46,7 +44,6 @@ h2 {
     transform: scale(1.05);
 }
 
-/* Divider */
 hr {
     border: none;
     height: 1px;
@@ -54,7 +51,6 @@ hr {
     margin: 20px 0;
 }
 
-/* Now playing section */
 .now-playing {
     text-align: center;
 }
@@ -77,7 +73,6 @@ hr {
     color: #aaa;
 }
 
-/* Progress bar */
 input[type="range"] {
     width: 100%;
     margin: 10px 0;
@@ -110,7 +105,6 @@ input[type="range"] {
     transform: scale(1.1);
 }
 
-/* Optional: smaller font for time display */
 .time {
     display: flex;
     justify-content: space-between;
@@ -119,7 +113,14 @@ input[type="range"] {
     margin-bottom: 5px;
 }
 
-/* Responsive tweak */
+.social {
+    text-align: center;
+}
+
+p.social {
+    margin-bottom: -1000px;
+}
+
 @media screen and (max-width: 420px) {
     .player {
         width: 90%;

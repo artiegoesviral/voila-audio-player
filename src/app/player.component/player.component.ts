@@ -1,5 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { AudioService } from '../services/audio.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-player',
