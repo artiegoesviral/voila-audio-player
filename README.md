@@ -33,7 +33,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/artiegoesviral/voila-audio-player
 Move into the project folder:
-cd your-repo-name
+cd voila-audio-player
 Install dependencies:
 npm install
 Run the development server:
