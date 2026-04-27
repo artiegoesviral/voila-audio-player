@@ -45,6 +45,7 @@ Run the development server:
 ng serve
 Then open:
 http://localhost:4200
+```
 
 Usage
 - Browse the available playlists
