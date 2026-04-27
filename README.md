@@ -1,59 +1,69 @@
-# VoilaPlayer
+# VOILÁ Music Player Web Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+An interactive music player built with Angular, HTML, and CSS. The application organises songs by mood-based playlists to create a more engaging and user-friendly listening experience.
 
-## Development server
+## Overview
 
-To start a local development server, run:
+This project was created to practice frontend development with Angular while building a visually structured and responsive music player interface. Users can explore music grouped by mood and interact with audio controls in a clean, accessible layout.
+
+## Features
+
+- Mood-based playlist organisation
+- Audio playback controls
+- Dynamic user interface updates
+- Responsive layout for different screen sizes
+- Clean and simple UI built with Angular
+
+## Tech Stack
+
+- Angular
+- TypeScript
+- HTML
+- CSS
+
+## Project Goals
+
+- Practice component-based frontend development with Angular
+- Build an interactive and responsive media interface
+- Improve UI structuring and frontend logic skills
+- Create a portfolio-ready project with deployment
+
+## Live Demo
+https://artiegoesviral.github.io/voila-audio-player/
+
+## Installation
+
+Clone the repository:
 
 ```bash
+git clone https://github.com/artiegoesviral/voila-audio-player
+Move into the project folder:
+cd your-repo-name
+Install dependencies:
+npm install
+Run the development server:
 ng serve
-```
+Then open:
+http://localhost:4200
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Usage
+- Browse the available playlists
+- Select music by mood
+- Use the playback controls to play and navigate songs
 
-## Code scaffolding
+Learning Outcomes
+- Through this project, I strengthened my skills in:
+- Angular component structure
+- State handling for UI interactions
+- Responsive layout design
+- Frontend project organization
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Future Improvements
+- Add playlist search and filtering
+- Display current track information more dynamically
+- Add volume and progress controls
+- Improve accessibility features
+- Integrate a backend for storing playlists and preferences
 
-```bash
-ng generate component component-name
-```
+Author: Qurat-ul-Anne Sikander Akhter
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
