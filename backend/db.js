@@ -1,6 +1,8 @@
 import mysql from 'mysql2/promise';
 import 'dotenv/config';
 
+const caCert = process.env.DB_CA_CERT?.replace(/\\n/g, '\n');
+
 export const pool = mysql.createPool({
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
@@ -8,6 +10,7 @@ export const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     ssl: {
-        ca: process.env.DB_CA_CERT
+        ca: caCert,
+        rejectUnauthorized: true
     }
 });
