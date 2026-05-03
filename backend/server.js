@@ -2,7 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import { pool } from './db.js';
 
-const app = express(); // ← THIS is missing in your file
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 app.use(cors());
 app.use(express.json());
@@ -35,15 +38,13 @@ app.get('/api/playlists', async (req, res) => {
 
         playlist.songs.push({
             title: row.title,
-            path: `http://localhost:3000${row.path}`,
-            artwork: `http://localhost:3000${row.artwork}`
+            path: `${BASE_URL}${row.path}`,
+            artwork: `${BASE_URL}${row.artwork}`
         });
     }
 
     res.json(playlists);
 });
-
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Backend running on port ${PORT}`);

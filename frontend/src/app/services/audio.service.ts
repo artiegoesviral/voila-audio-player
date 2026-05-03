@@ -48,7 +48,7 @@ export class AudioService {
     this.audio.addEventListener('ended', () => this.next());
   }
   loadPlaylistsFromDatabase() {
-    this.http.get<Playlist[]>('http://voila-player-backend.onrender.com/api/playlists')
+    this.http.get<Playlist[]>('https://voila-player-backend.onrender.com/api/playlists')
       .subscribe({
         next: (data) => {
           this.playlists = data;
