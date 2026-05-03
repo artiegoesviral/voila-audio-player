@@ -1,5 +1,4 @@
 import mysql from 'mysql2/promise';
-import fs from 'fs';
 import 'dotenv/config';
 
 export const pool = mysql.createPool({
@@ -9,6 +8,6 @@ export const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     ssl: {
-        ca: fs.readFileSync('./ca.pem')
+        ca: process.env.DB_CA_CERT
     }
 });
