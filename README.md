@@ -1,66 +1,95 @@
-# VOILÁ Music Player Web Application
-An interactive music player built with Angular, HTML, and CSS. The application organises songs by mood-based playlists to create a more engaging and user-friendly listening experience.
+# VOILÁ — Mood-Based Music Player
 
-## Overview
-This project was created to practice frontend development with Angular while building a visually structured and responsive music player interface. Users can explore music grouped by mood and interact with audio controls in a clean, accessible layout.
+A full-stack music player that organises songs by mood and streams audio through a deployed backend API.
 
-## Features
-- Mood-based playlist organisation
-- Audio playback controls
-- Dynamic user interface updates
-- Responsive layout for different screen sizes
-- Clean and simple UI built with Angular
-
-## Tech Stack
-- Angular
-- TypeScript
-- HTML
-- CSS
-
-## Project Goals
-- Practice component-based frontend development with Angular
-- Build an interactive and responsive media interface
-- Improve UI structuring and frontend logic skills
-- Create a portfolio-ready project with deployment
-
-## Live Demo
+### Live App:
 https://artiegoesviral.github.io/voila-audio-player/
 
-## Installation
+## Overview
+VOILÁ is a responsive music player built with Angular and powered by a Node.js backend. It demonstrates full-stack integration, serving playlists dynamically from a database and streaming media files in real time.
 
-Clone the repository:
+The project focuses on clean UI design, component-based architecture, and real-world deployment of a frontend–backend system.
 
-```bash
-git clone https://github.com/artiegoesviral/voila-audio-player
-Move into the project folder:
-cd voila-audio-player
-Install dependencies:
-npm install
-Run the development server:
-ng serve
-Then open:
-http://localhost:4200
+## Key Features
+- Mood-based playlist organisation
+- Audio playback with dynamic controls
+- Data fetched from a live API
+- Artwork and audio served from backend
+- Responsive and user-friendly interface
+
+## Tech Stack
+
+### Frontend
+- Angular
+- TypeScript
+
+### Backend
+- Node.js
+- Express
+
+### Database
+- MySQL (Aiven)
+
+### Deployment
+- Frontend: GitHub Pages
+- Backend: Render
+
+## Architecture
+``` 
+Angular (GitHub Pages)
+        ↓
+Express API (Render)
+        ↓
+MySQL (Aiven)
 ```
 
-## Usage
-- Browse the available playlists
-- Select music by mood
-- Use the playback controls to play and navigate songs
+- Frontend requests playlist data from API
+- Backend queries database and returns structured playlists
+- Media files are served via HTTP endpoints
 
-## Learning Outcomes
-- Through this project, I strengthened my skills in:
-- Angular component structure
-- State handling for UI interactions
-- Responsive layout design
-- Frontend project organization
+## Local Setup
+```bash
+git clone https://github.com/artiegoesviral/voila-audio-player
+cd voila-audio-player
+```
+
+### Frontend
+``` bash
+cd frontend
+npm install
+ng serve
+```
+
+### Backend
+```bash
+cd backend
+npm install
+npm start
+```
+
+Create a .env file in /backend:
+
+```env
+BASE_URL=http://localhost:3000
+DB_HOST=...
+DB_PORT=...
+DB_USER=...
+DB_PASSWORD=...
+DB_NAME=...
+```
+
+## What This Project Demonstrates
+- Full-stack application architecture
+- API integration with Angular
+- Media streaming from a backend service
+- Deployment across multiple platforms
+- Debugging real-world issues (CSP, HTTPS, environment config)
 
 ## Future Improvements
-- Add playlist search and filtering
-- Display current track information more dynamically
-- Add volume and progress controls
-- Improve accessibility features
-- Integrate a backend for storing playlists and preferences
+- Search and filtering
+- Playback progress + volume control
+- User authentication
+- Cloud media storage (S3 / Cloudinary)
 
 ## Author
 Qurat-ul-Anne Sikander Akhter
-
