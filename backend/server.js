@@ -13,13 +13,19 @@ app.get('/', (req, res) => {
     res.send('Backend is running');
 });
 
-app.get('/health', async (req, res) => {
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        service: 'running'
+    });
+});
+
+app.get('/db-health', async (req, res) => {
     try {
         await pool.query('SELECT 1');
         res.json({
             status: 'ok',
-            database: 'connected',
-            baseUrl: BASE_URL
+            database: 'connected'
         });
     } catch (error) {
         console.error('DB health check failed:', error.message);
