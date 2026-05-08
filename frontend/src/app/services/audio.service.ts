@@ -17,6 +17,14 @@ export interface Playlist {
 export class AudioService {
   private audio = new Audio();
 
+  private readonly API_BASE = 'https://voila-player-backend.onrender.com';
+
+  private getAssetUrl(path: string): string {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+    return `${this.API_BASE}${path}`;
+  }
+
   currentPlaylist: Playlist | null = null;
   currentSong: Song | null = null;
 
@@ -85,11 +93,7 @@ export class AudioService {
     this.currentSong = song;
     this.currentTime = 0;
 
-    const BASE = 'https://artiegoesviral.github.io/voila-audio-player/';
-
-    this.audio.src = song.audio_path.startsWith('http')
-      ? song.audio_path
-      : BASE + song.audio_path;
+    this.audio.src = this.getAssetUrl(song.audio_path);
 
     console.log('Final audio src:', this.audio.src);
 
