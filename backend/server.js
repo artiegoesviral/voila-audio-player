@@ -36,6 +36,18 @@ app.get('/db-health', async (req, res) => {
     }
 });
 
+app.get('/api/playlists', async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM playlists');
+        res.json(rows);
+    } catch (error) {
+        console.error('Failed to fetch playlists:', error.message);
+        res.status(500).json({
+            message: 'Failed to load playlists'
+        });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server running at ${BASE_URL}`);
 });
