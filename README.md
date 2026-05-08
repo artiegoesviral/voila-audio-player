@@ -1,4 +1,4 @@
-# VOILÁ — Mood-Based Music Player
+# VOILÀ — Mood-Based Music Player
 
 A full-stack music player that organises songs by mood and streams audio through a deployed backend API.
 
@@ -6,7 +6,7 @@ A full-stack music player that organises songs by mood and streams audio through
 https://artiegoesviral.github.io/voila-audio-player/
 
 ## Overview
-VOILÁ is a responsive music player built with Angular and powered by a Node.js backend. It demonstrates full-stack integration, serving playlists dynamically from a database and streaming media files in real time.
+This is a responsive music player built with Angular and powered by a Node.js backend, displaying music and artwork by the rock band, VOILÀ. It demonstrates full-stack integration, serving playlists dynamically from a database and streaming media files in real time.
 
 The project focuses on clean UI design, component-based architecture, and real-world deployment of a frontend–backend system.
 
