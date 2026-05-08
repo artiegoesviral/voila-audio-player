@@ -49,3 +49,4 @@ backend/node_modules/
 .angular/cache/
 backend/.env
 backend/uploads/
+.env
