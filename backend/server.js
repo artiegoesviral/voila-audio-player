@@ -38,15 +38,45 @@ app.get('/db-health', async (req, res) => {
 
 app.get('/api/playlists', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM moods');
-        res.json(rows);
-    } catch (error) {
-        console.error('Failed to fetch playlists:', error);
+        const [rows] = await pool.query(`
+      SELECT
+        moods.id AS mood_id,
+        moods.name AS mood_name,
+        songs.id AS song_id,
+        songs.title,
+        songs.artist,
+        songs.file_url
+      FROM moods
+      LEFT JOIN songs ON songs.mood_id = moods.id
+      ORDER BY moods.id, songs.id
+    `);
 
+        const playlists = new Map();
+
+        rows.forEach(row => {
+            if (!playlists.has(row.mood_id)) {
+                playlists.set(row.mood_id, {
+                    id: row.mood_id,
+                    name: row.mood_name,
+                    songs: []
+                });
+            }
+
+            if (row.song_id) {
+                playlists.get(row.mood_id).songs.push({
+                    id: row.song_id,
+                    title: row.title,
+                    artist: row.artist,
+                    file_url: row.file_url
+                });
+            }
+        });
+
+        res.json([...playlists.values()]);
+    } catch (error) {
         res.status(500).json({
             message: 'Failed to load playlists',
-            error: error.message,
-            code: error.code
+            error: error.message
         });
     }
 });
