@@ -58,7 +58,7 @@ app.get('/api/playlists', async (req, res) => {
             if (!playlists.has(row.mood_id)) {
                 playlists.set(row.mood_id, {
                     id: row.mood_id,
-                    name: row.mood_name,
+                    mood: row.mood_name,
                     songs: []
                 });
             }
@@ -67,8 +67,8 @@ app.get('/api/playlists', async (req, res) => {
                 playlists.get(row.mood_id).songs.push({
                     id: row.song_id,
                     title: row.title,
-                    artist: row.artist,
-                    file_url: row.file_url
+                    audio_path: row.audio_path,
+                    artwork: row.artwork_path
                 });
             }
         });

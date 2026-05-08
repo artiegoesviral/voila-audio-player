@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Song {
+  audio_path: string;
   title: string;
   path: string;
   artwork: string;
@@ -35,7 +36,6 @@ export class AudioService {
       });
     });
 
-    // Continuous updater for currentTime
     setInterval(() => {
       if (this.currentSong) {
         this.zone.run(() => {
@@ -43,7 +43,7 @@ export class AudioService {
           this.duration = this.audio.duration || 0;
         });
       }
-    }, 200); // update 5 times per second
+    }, 200);
 
     this.audio.addEventListener('ended', () => this.next());
   }
@@ -78,7 +78,7 @@ export class AudioService {
     this.currentSong = song;
     this.currentTime = 0;
 
-    this.audio.src = song.path;
+    this.audio.src = song.audio_path;
     this.audio.currentTime = 0;
     this.audio.load();
   }
