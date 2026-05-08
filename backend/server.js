@@ -43,9 +43,10 @@ app.get('/api/playlists', async (req, res) => {
         moods.id AS mood_id,
         moods.name AS mood_name,
         songs.id AS song_id,
+        mood_id,
         songs.title,
-        songs.artist,
-        songs.file_url
+        songs.audio_path,
+        songs.artwork_path
       FROM moods
       LEFT JOIN songs ON songs.mood_id = moods.id
       ORDER BY moods.id, songs.id
