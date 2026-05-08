@@ -36,9 +36,9 @@ app.get('/db-health', async (req, res) => {
     }
 });
 
-app.get('/api/playlists', async (req, res) => {
+app.get('/api/moods', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM playlists');
+        const [rows] = await pool.query('SELECT * FROM moods');
         res.json(rows);
     } catch (error) {
         console.error('Failed to fetch playlists:', error.message);
