@@ -29,7 +29,6 @@ export class AudioService {
 
   constructor(private zone: NgZone, private http: HttpClient) {
     this.loadPlaylistsFromDatabase();
-    // Ensure duration is updated when metadata loads
     this.audio.addEventListener('loadedmetadata', () => {
       this.zone.run(() => {
         this.duration = this.audio.duration || 0;
@@ -73,12 +72,27 @@ export class AudioService {
 
     const song = this.currentPlaylist.songs[this.index];
 
+    console.log('Selected song:', song);
+    console.log('audio_path:', song.audio_path);
+
+    if (!song?.audio_path) {
+      console.error('Missing audio_path:', song);
+      return;
+    }
+
     this.audio.pause();
 
     this.currentSong = song;
     this.currentTime = 0;
 
-    this.audio.src = song.audio_path;
+    const BASE = 'https://artiegoesviral.github.io/voila-audio-player/';
+
+    this.audio.src = song.audio_path.startsWith('http')
+      ? song.audio_path
+      : BASE + song.audio_path;
+
+    console.log('Final audio src:', this.audio.src);
+
     this.audio.currentTime = 0;
     this.audio.load();
   }
