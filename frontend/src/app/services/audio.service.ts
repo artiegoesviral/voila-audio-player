@@ -19,7 +19,7 @@ export class AudioService {
 
   private readonly API_BASE = 'https://voila-player-backend.onrender.com';
 
-  private getAssetUrl(path: string): string {
+  getAssetUrl(path: string): string {
     if (!path) return '';
     if (path.startsWith('http')) return path;
     return `${this.API_BASE}${path}`;

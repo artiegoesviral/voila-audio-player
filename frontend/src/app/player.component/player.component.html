@@ -10,7 +10,7 @@
 <hr>
 
 <div class="now-playing" [hidden]="!audio.currentSong">
-    <img class="artwork" [src]="audio.currentSong?.artwork" alt="Artwork" width="200">
+    <img class="artwork" [src]="audio.getAssetUrl(audio.currentSong?.artwork || '')" alt="Artwork" width="200">
     <h3>{{ audio.currentSong?.title }}</h3>
 
     <input type="range" min="0" [max]="audio.duration || 0" [value]="audio.currentTime || 0"
